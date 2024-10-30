@@ -1,0 +1,5 @@
+puede ser en ubunto, 
+algo ahi para cada politica de schedule y tomar el tiempo, 
+lo rojo es una sola linea, 
+hay un comando que nos dice la politica de cada proceso 
+-> esos 3 no tienen politica (hint: es sobre herencia)

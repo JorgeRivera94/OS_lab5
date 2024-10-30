@@ -1,0 +1,9 @@
+agregar 3 lineas de codigo para tempo, 
+crear childs, 
+valores de cada configuracion, 
+tabla se entrega (modificar ek while) (linea 21)
+
+cambió para no repetir el loop 100 veces, sino 30 veces. Por favor tenerlo en cuenta.
+
+También tener en cuenta que los códigos de los puntos 1 y 3 deben ser modificados para que cumplan
+    con los requisitos de la rúbrica 2 de calificación.
