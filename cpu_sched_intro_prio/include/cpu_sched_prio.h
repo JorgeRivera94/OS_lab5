@@ -1,7 +1,6 @@
 #ifndef CPU_SCHED_PRIO_H
 #define CPU_SCHED_PRIO_H
 
-// includes
 #include <stdlib.h>
 #include <sys/time.h>
 
