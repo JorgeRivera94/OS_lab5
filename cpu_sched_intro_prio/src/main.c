@@ -1,18 +1,15 @@
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/resource.h>  // for setpriority
 #include <sys/time.h>
 #include <sys/wait.h>
 #include <unistd.h>
 
 #include "cpu_sched_prio.h"
 
-
 int main() {
   pid_t pids[NUM_CHILDREN];
-  int priorities[NUM_CHILDREN] = {
-      -10, 0, 20};  // Priorities: higher value means lower priority
+  int priorities[NUM_CHILDREN] = {-10, 0, 20};
 
   // In parent process
   struct timeval tv;
@@ -30,31 +27,18 @@ int main() {
       // In child process
       struct timeval ctv;
 
-      // HERE MAKE A FUNCTION TO PRINT THE INITIAL AND NEW PRIORITIES
-      printf("Child %d (pid: %d) with priority %d\n", i + 1, getpid(),
-             priorities[i]);
-
-      printf("The initial priority is %d\n",
-             getpriority(PRIO_PROCESS, getpid()));
-
-      // Set the priority of this process
-      if (setpriority(PRIO_PROCESS, getpid(), priorities[i]) < 0) {
-        perror("setpriority");
-        exit(1);
-      }
-      // END THE PRIORITY FUNCTION
+      AssignPriorities(&i, priorities);
 
       // Start the CPU-bound task
-      cpu_bound_task(i + 1);
+      CPUBoundTask(i + 1);
 
       // To print time delta
       gettimeofday(&ctv, NULL);
 
-      int id = i + 1;
-      printf("Process %d Seconds: %lf\n", id,
-             (ctv.tv_sec - tv.tv_sec) + (ctv.tv_usec - tv.tv_usec) / 1e9);
+      // Calculate time delta
+      CalculateTime(i + 1, tv, ctv);
 
-      exit(0);  // Shouldn't reach here
+      exit(0);
     }
   }
 
