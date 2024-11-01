@@ -1,5 +1,9 @@
 #include "cpu_sched_prio.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
 void cpu_bound_task(int id) {
   printf("Process %d started, pid: %d\n", id, getpid());
   for (int j = 0; j < 30; j++) {

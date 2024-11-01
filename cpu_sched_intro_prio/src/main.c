@@ -1,5 +1,3 @@
-#include "cpu_sched_prio.h"
-
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,6 +5,9 @@
 #include <sys/time.h>
 #include <sys/wait.h>
 #include <unistd.h>
+
+#include "cpu_sched_prio.h"
+
 
 int main() {
   pid_t pids[NUM_CHILDREN];
@@ -29,6 +30,7 @@ int main() {
       // In child process
       struct timeval ctv;
 
+      // HERE MAKE A FUNCTION TO PRINT THE INITIAL AND NEW PRIORITIES
       printf("Child %d (pid: %d) with priority %d\n", i + 1, getpid(),
              priorities[i]);
 
@@ -40,6 +42,7 @@ int main() {
         perror("setpriority");
         exit(1);
       }
+      // END THE PRIORITY FUNCTION
 
       // Start the CPU-bound task
       cpu_bound_task(i + 1);
