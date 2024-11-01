@@ -30,8 +30,8 @@ void AssignPriorities(int* index, int priorities[3]) {
 }
 
 void CalculateTime(int id, struct timeval ptv, struct timeval ctv) {
-  long seconds = ptv.tv_sec - ctv.tv_sec;
-  long microseconds = ptv.tv_usec - ctv.tv_usec;
+  long seconds = ctv.tv_sec - ptv.tv_sec;
+  long microseconds = ctv.tv_usec - ptv.tv_usec;
 
   // Check underflow
   if (microseconds < 0) {
