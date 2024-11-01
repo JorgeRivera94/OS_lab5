@@ -15,7 +15,7 @@
  * When the Funtion starts, it prints that it started and the process' process
  * ID. After every iteration, it prints it's process ID and that it is still
  * running.
- * @param id Process ID of the current process.
+ * @param id Integer Process ID of the current process.
  */
 void cpu_bound_task(int id);
 
